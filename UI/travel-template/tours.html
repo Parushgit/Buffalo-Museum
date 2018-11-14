@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Travel Template</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,900|Source+Sans+Pro:300,400,400i,700,900" rel="stylesheet">
+
+<div class="page" ng-app="places" ng-controller="galleryController">
+  
+  <div class="places">
+    <div class="search">
+      <i id="search" class="fa fa-search"></i>
+      <input type="text" placeholder="Search..." ng-model="searchKeyword.name">
+      <span id="search-delete" class="fa fa-times" ng-click="searchKeyword.name = ''"></i>
+    </div>
+    
+    
+    <div class="gallery">
+      <p class="not-found" ng-show="(items | filter: searchKeyword).length == 0">Nothing here! (...yet)</p>
+      <div id="scroll" class="scroll">
+        <div class="item" ng-click="cover(item.name, item.cover)" ng-repeat="item in items | filter: searchKeyword">
+          <div class="text">{{ item.name }}</div>
+          <img src="{{ item.img }}" alt="Viaja a {{ item.name }}">
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  <!-- <div class="tours">
+    <div class="row">
+      <div class="four columns">
+        <div class="tour lg-1">
+          <h2>Beach Jump Excursion</h2>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque harum nemo ex nostrum blanditiis minus aperiam, maiores eveniet nulla consequatur nobis cum voluptatum!</p>
+        </div>
+      </div>
+      <div class="eight columns">
+        <div class="row">
+          <div class="twelve columns">
+            <div class="tour md-1">
+              <h2>Energy Meetings</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam quidem laborum et enim repellat fugiat minus ex, voluptate vel magni voluptas velit quasi nisi, temporibus officiis modi optio quam provident.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="twelve columns">
+            <div class="row">
+              <div class="six columns">
+                <div class="tour md-2">
+                  <h2>In Water Paradise</h2>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum deleniti temporibus nobis.</p>
+                </div>
+              </div>
+              <div class="six columns">
+                <div class="tour-p">
+                  <h2>Breakfast: Food for Thought</h2>
+                  <p>Todays activities include breakfast with eggs, juice, bread, and other breakfast-kind ingredients. All that for just $10 dollars...</p>
+                  <a href="#">Learn more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  
+  
+  
+  
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

@@ -13,6 +13,15 @@ function validate()
     }
 }
 
+function getTheTours() {
+//   $.get("getTours.php", function(data) {
+//     console.log(data);
+//     //And you can use jQuery to add data to a element.
+//     //$("#imgsDiv").html(data)
+// });
+  location.href="../travel-template/tours.html";
+}
+
 $('.form').find('input, textarea').on('keyup blur focus', function (e) {
   
   var $this = $(this),

@@ -1,0 +1,358 @@
+/*  Special thanks: https://codepen.io/joshhunt/pen/LVQZRa  */
+
+.button-trip
+  font-family 'Open Sans', sans-serif
+  background white
+  border-color @background
+  font-size 14px
+  font-weight bold
+  letter-spacing normal
+  text-transform none
+  border-radius 24px
+  height 50px
+  line-height 50px
+  position relative
+  color #242626
+  border-color @color
+  transition all 0.3s ease
+  .fa
+    position relative
+    bottom -3px
+    right -14px
+    font-size 24px
+  &:hover
+    box-shadow 0 -100px 0 0 #242626 inset
+    border-color white
+    color white
+
+
+html,body
+  height 100%
+  font-size 18px
+  font-family 'Lato', sans-serif
+  
+.header
+  background-image url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Madre_e_hija_disfrutando_de_la_playa_de_Newport%2C_California.JPG/1200px-Madre_e_hija_disfrutando_de_la_playa_de_Newport%2C_California.JPG')
+  background-size cover
+  background-position center 30%
+  min-height 500px
+  position relative
+  .button-trip
+    position absolute
+    left 0
+    right 0
+    margin auto
+    bottom -25px
+    width 200px
+  &.bgChange .tlogo
+    background-color white
+  
+.brand
+  height 80px
+  .tlogo
+    text-decoration none
+    text-transform uppercase
+    font-size 16px
+    font-weight 900
+    color #303233
+    text-align left
+    position relative
+    display inline-block
+    line-height 80px
+    height 80px
+    margin-left 15px
+    padding-left 10px
+    width 94px
+    @media (min-width: 550px)
+      width 140px
+      text-align center
+      margin-left 20px
+    @media (min-width: 1000px)
+      margin-left 85px
+    .fa
+      @media (min-width: 550px)
+        position absolute
+        font-size 1.2rem
+        left 18px
+        top 0
+        bottom 0
+        margin auto
+        height 20px
+.spectacular
+  color white
+  text-align center
+  padding 120px 10px 40px
+  h1
+    text-shadow 0 0 10px rgba(#111,0.2)
+    text-transform uppercase
+    font-weight 900
+    margin 0 0 20px
+    font-size 36px
+    @media (min-width: 550px)
+      font-size 72px
+  .fa
+    text-shadow 0 0 10px rgba(#111,0.4)
+    z-index 10
+    font-size 4em
+    &:hover
+      cursor pointer
+      
+.places
+  background-color #242626
+  padding 40px 0 60px
+
+.search
+  position relative
+  height 65px
+  input
+    font-family 'Open Sans', sans-serif
+    background transparent
+    color #A9A9A9
+    border none
+    width 100%
+    height 100%
+    font-weight 300
+    padding 0 0 0 50px
+    border-radius 0
+    &:focus
+      border none
+  #search, #search-delete
+    position absolute
+    top 0 
+    bottom 0
+    margin auto
+    display block
+    line-height 65px
+    height 65px
+    color #AAA
+  #search
+    left 20px
+  #search-delete
+    width 65px
+    background #111
+    text-align center
+    right 0px
+    bottom -10px
+    cursor pointer
+    transition color 400ms linear
+    &:hover
+      color white
+
+$itemWidth = 200px
+$itemHeight = 120px
+$growFactor = 1.3
+$moveLeft = -($itemWidth * ($growFactor - 1) / 2)
+$moveRight = $itemWidth * ($growFactor - 1)
+
+.places .gallery
+  width 100%
+  min-height 204px
+  position relative
+  p.not-found
+    color #6a6a6a
+    text-align center
+    left 0 
+    right 0
+    top 70px
+    position absolute
+  .scroll, .item, .item:after, .text
+    transition all 450ms ease
+  .item
+    width 100%
+    height $itemHeight*1.5
+    background #111
+    cursor pointer
+    margin 0
+    position relative
+    overflow hidden
+    text-align center
+    .text
+      font-size 24px
+      position absolute
+      bottom $itemHeight*.60
+      left 0
+      right 0
+      text-align center
+      color white
+      font-weight bold
+      display inline
+      padding 0 5px
+      z-index 10
+      &:after
+        content ""
+        left 0
+        right 0
+        top 0
+        bottom 0
+        width 50%
+        margin auto
+        position absolute
+        background #111
+        z-index -5
+    img
+      min-height 100%
+      min-width 100%
+      width 100%
+    &:after
+      content ""
+      top 0
+      left 0
+      right 0
+      bottom 0
+      position absolute
+@media (min-width: 550px)
+  .places .gallery
+    overflow hidden
+    overflow-x auto
+    .scroll // The Magic *w*
+      white-space nowrap
+      margin 25px 0
+      padding 0 30px 10px
+      &:hover
+        transform: translate3d($moveLeft, 0, 0)
+      .item
+        // Fade out every tile
+        //opacity .3
+        // And then grow the current tile and make it opaque again
+        &:hover
+          transform scale($growFactor)
+          opacity 1
+          & ~ .item
+            transform translate3d($moveRight, 0, 0)
+    .item
+      width $itemWidth
+      height $itemHeight
+      display inline-block
+      border-radius 4px
+      margin 0 10px
+      transform-origin: center left
+      &:last-child
+        margin-right 80px
+      &:hover
+        top 0
+        z-index 5
+        &:after
+          background-color transparent
+      &:after
+        background-color rgba(#111,0.2)
+      .text
+        bottom 50px
+        font-size inherit
+        &:after
+          display none
+          
+          
+          
+          
+$tourHeight = 250px
+.tours
+  margin 80px auto
+  max-width 1000px
+  padding 0 0
+  @media (min-width: 750px)
+    padding 0 25px
+  // @media (min-width: 1000px)
+  //   width 900px
+  //   margin 0 auto
+  .tour-p
+    height $tourHeight
+    box-sizing border-box
+    position relative
+    padding 0 15px
+    @media (min-width: 550px)
+      padding 0
+    h2
+      font-weight normal
+      text-transform uppercase
+      margin 0 0 10px
+      font-weight bold
+      font-size 18px
+      @media (min-width: 550px)
+        font-size 24px
+      @media (min-width: 1000px)
+        font-size 32px
+        letter-spacing 4px
+    p
+      color #345656
+      margin 0
+      font-size 18px
+    a
+      position absolute
+      bottom 15px
+      right 0
+      display block
+      text-decoration none
+      padding 1px 5px
+      background-color #222
+      color white
+      transition all 0.2s ease
+      &:hover
+        background-color #ffee22
+        color #222
+  .tour
+    width 100%
+    overflow hidden
+    position relative
+    cursor pointer
+    background-size cover
+    background-position center 0
+    background-repeat no-repeat
+    background-color #111
+    transition all 0.6s ease
+    p
+      top -100px
+      position absolute
+      color transparent
+      transition all 0.4s ease
+      padding 10px 20px 0
+    &:hover
+      background-position center -10px
+      &:after
+        background rgba(#111, 0.7)
+      p
+        color white
+        top 0
+        z-index 10
+      h2
+        bottom 5%
+    h2
+      bottom 60%
+      z-index 10
+      transition all 0.4s ease
+      position absolute
+      width 100%
+      font-weight bold
+      color white
+      text-shadow 0 0 8px rgba(#111, 0.2)
+      padding-left 10px
+      box-sizing border-box
+      margin 0
+      font-size 36px
+      @media (min-width: 550px)
+        font-size 24px
+        letter-spacing normal
+      @media (min-width: 750px)
+        font-size 32px
+    &:after
+      content ""
+      position absolute
+      top 0
+      bottom 0
+      left 0
+      right 0 
+      background linear-gradient(0, rgba(#111,0.8) 0%, rgba(#111,0) 100%)
+  .md-1, .md-2
+    height $tourHeight - 10px
+  .md-1, .lg-1, .md-2
+    margin-bottom 20px
+  .md-1
+    background-image url('https://i1.wp.com/chetumaltours.com/wp-content/uploads/2017/04/tour-desde-chetumal-y-bacalar-a-calakmul-1.jpg?fit=740%2C516&ssl=1')
+  .md-2
+    background-image url('http://www.freejpg.com.ar/asset/900/df/df09/F100007869.jpg')
+  .lg-1
+    height $tourHeight*2
+    background-image url('https://s-media-cache-ak0.pinimg.com/originals/80/47/1d/80471d2051f30f10cbbac114632c7af4.jpg')
+
+    
+    
+    
