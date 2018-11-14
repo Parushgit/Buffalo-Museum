@@ -37,6 +37,7 @@ if($num>0){
             "id" => $id,
             "name" => $name,
             "type" => $type,
+            "image" => $image,
             //"description" => html_entity_decode($description),
         );
         

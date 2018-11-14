@@ -29,50 +29,80 @@ if($age >= 4 && $age <= 12){
     $content->age_group = "C";
 }
 
+$image = $content->read_image();
+$seq_array = $content->read_sequence();
 
 // read the details of tour to be edited
-$stmt = $content->read();
-$num = $stmt->rowCount();
+//$stmt = $content->read();
+//$num = $stmt->rowCount();
+
+$tours_arr=array();
+$tours_arr["items"]=array();
+$ques_array=array();
 
 
-// check if more than 0 record found
-if($num>0){
+$tours = array();
+$tours["tour"] = array();
+
+//$num = $stmt->rowCount();
+
+if(sizeof($seq_array)>0){
+foreach($seq_array as $sequence){
+    $ques_array=array();
     
-    // products array
-    $tours_arr=array();
-    $tours_arr["records"]=array();
-    
-    // retrieve our table contents
-    // fetch() is faster than fetchAll()
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-        // extract row
-        // this will make $row['name'] to
-        // just $name only
-        extract($row);
+    $content->seq = $sequence;
+    $description = $content->read_description();    
+    $ques_arr = $content->read_questions();
+    $cord = $content->read_cord();
+       
+    foreach($ques_arr as $question){
+        $content->ref_id = $question['id'];
         
-        $tour_item=array(
+        $correct_answer = $content->read_correct();
+        $answers = $content->read_answers();
+
+        $ans_arr = array();
+
+        foreach($answers as $answer){
             
-            "id" => $id,
-            "type" => $type,
-            "age_group" => $age_group,
-            "tour_id" => $tour_id,
-            "type" => $type,
-            "value" => $value,
-            "lang" => $lang,
-            "seq" => $seq,
-            "ref_id" => $ref_id,
-        );
-        
-        array_push($tours_arr["records"], $tour_item);
-    }
-    print_r($tours_arr);
-    // set response code - 200 OK
-    http_response_code(200);
-    
-    // show products data in json format
-    //echo json_encode($tours_arr);
-}
+                $ans_element = explode("-",$answer);
 
+                $ans_item = array(
+                    $ans_element[0] => $ans_element[1],
+                );
+                        
+            array_push($ans_arr, $ans_item);
+            
+        }
+        
+        
+        $ques_item = array(
+            
+            "question" => $question['value'],
+            "answers" => $ans_arr,
+            "correct_answer" => $correct_answer,
+           
+        );
+        array_push($ques_array, $ques_item);
+    }
+       
+    $tour_item=array(
+        
+        "image" => $image,
+        "text" => $description,
+        "questions" => $ques_array,
+        "cord" => $cord,
+
+    );
+    array_push($tours_arr["items"], $tour_item);
+    
+}
+array_push($tours["tour"],$tours_arr);
+
+echo json_encode($tours);
+
+http_response_code(200);
+}
 else{
     // set response code - 404 Not found
     http_response_code(404);
