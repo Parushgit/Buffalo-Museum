@@ -9,6 +9,7 @@ class Tour{
     public $id;
     public $name;
     public $type;
+    public $image;
     
     // constructor with $db as database connection
     public function __construct($db){

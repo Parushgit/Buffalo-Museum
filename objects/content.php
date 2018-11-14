@@ -20,21 +20,167 @@ class Content{
         $this->conn = $db;
         
     }
+    
     // read products
-    function read(){
+    function read_image(){
         
         // select all query
         $query = "SELECT *
-                FROM ".$this->table_name." where 
-                    tour_id = ".$this->tour_id." and age_group = '".$this->age_group."'  ";
+                FROM ".$this->table_name." where
+                    tour_id = ".$this->tour_id." and age_group = '".$this->age_group."' 
+                        and type = 'img'  ";
         
         // prepare query statement
         $stmt = $this->conn->prepare($query);
-        
-        
-        // execute query
         $stmt->execute();
         
-        return $stmt;
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        // set values to object properties
+        $image_path = $row['value'];
+        // execute query
+        return $image_path;
     }
+    
+    // read products
+    function read_sequence(){
+        
+        // select all query
+        $query = "SELECT DISTINCT(seq)
+                FROM ".$this->table_name." where
+                    tour_id = ".$this->tour_id." and age_group = '".$this->age_group."'";
+        
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $num = $stmt->rowCount();
+        $seq_arr=array();
+        
+        if($num > 0){
+            // sequence array
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                $sequence = $row['seq'];
+                if($sequence>0){
+                    array_push($seq_arr, $sequence);
+                }
+            }
+        }
+        return $seq_arr;     
+    }
+    
+    // read products
+    function read_description(){
+        
+        // select all query
+        $query = "SELECT *
+                FROM ".$this->table_name." where
+                    tour_id = ".$this->tour_id." and age_group = '".$this->age_group."' and seq = ".$this->seq."
+                        and type = 'desc'";
+        
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row['value'];
+        
+    }
+    
+    // read products
+    function read_cord(){
+        
+        // select all query
+        $query = "SELECT *
+                FROM ".$this->table_name." where
+                    tour_id = ".$this->tour_id." and age_group = '".$this->age_group."' 
+                        and seq = ".$this->seq." and type = 'cord'";
+        
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row['value'];
+        
+    }
+    
+    // read products
+    function read_questions(){
+        
+        // select all query
+        $query = "SELECT *
+                FROM ".$this->table_name." where
+                    tour_id = ".$this->tour_id." and age_group = '".$this->age_group."' 
+                        and seq = ".$this->seq." and type='ques' ";
+        
+        
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $num = $stmt->rowCount();
+        $ques_arr=array();
+        
+        if($num > 0){
+            // sequence array
+            $ques_arr=array();
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                //print_r($row);
+                $q_item = array(
+                    "id" => $row['id'],
+                    "value" => $row['value'],
+                );
+                array_push($ques_arr, $q_item);
+            }
+        }
+        //print_r($ques_arr);
+        return $ques_arr;       
+    }
+    
+    // read products
+    function read_answers(){
+        
+        // select all query
+        $query = "SELECT *
+                FROM ".$this->table_name." where
+                    tour_id = ".$this->tour_id." and age_group = '".$this->age_group."' 
+                        and type ='ans' and ref_id=".$this->ref_id." and seq = ".$this->seq."";
+        
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $num = $stmt->rowCount();
+        $ques_arr=array();
+        
+        if($num > 0){
+            // sequence array
+            while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                array_push($ques_arr, $row['value']);
+            }
+        }
+        //print_r($seq_arr);
+        return $ques_arr;
+    }
+    
+    // read products
+    function read_correct(){
+        
+        // select all query
+        $query = "SELECT *
+                FROM ".$this->table_name." where
+                    tour_id = ".$this->tour_id." and age_group = '".$this->age_group."'
+                        and type = 'cans' and ref_id=".$this->ref_id."  ";
+        
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        // set values to object properties
+        $correct_answer = $row['value'];
+        // execute query
+        return $correct_answer;
+    }
+    
+    
 }
