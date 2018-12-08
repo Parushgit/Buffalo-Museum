@@ -1,5 +1,5 @@
 # Buffalo Museum - Self Guided Tour (Deployment Instructions)
-This document teaches how to install the application on a server. 
+This document teaches how to install the self guided tour application on a server. 
 
 ## Dependencies
 - Apache server installed
