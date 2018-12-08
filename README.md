@@ -24,15 +24,19 @@ All the above things are required to make apis working fully.
 ### Database
 Below are the scripts to be executed.
 To create tables - 
+```
 CREATE_TOURS.sql
 CREATE_RESOURCES.sql
 CREATE_IMAGES.sql
 CREATE_AGE_GROUPS.sql
+```
 
 To insert quests/tours in the tables -
+```
 CREATE_QUEST_1.sql
 CREATE_QUEST_2.sql
 CREATE_TOUR_3.sql
+```
 
 Happy touring :)
 
