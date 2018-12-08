@@ -36,6 +36,7 @@ CREATE_TOUR_3.sql
 
 Happy touring :)
 
+# Buffalo Museum - Self Guided Tour (Completed Application)
 
 Our final application for self guided tours is deployed here
 
