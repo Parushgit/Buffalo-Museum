@@ -68,3 +68,5 @@ https://docs.google.com/document/d/16x-rpGWlxcc1W680_qNcYyEFjDgCMhXXviqyspF5O60/
 https://docs.google.com/document/d/1rRDraHjvOAi1XtnLfJLzx7wPBO3-91ACPreeoZe230w/edit?usp=sharing
 
 https://docs.google.com/spreadsheets/d/1aO5QlSZAnGHiW1lwSd15kUj9F3cs4FI-S6TI2kPPHi8/edit?usp=sharing
+
+https://docs.google.com/presentation/d/1rVWm-umJpQi1DPoAOXWZx_kHCl_OyYGkhYZ5Wigo2bM/edit?usp=sharing
