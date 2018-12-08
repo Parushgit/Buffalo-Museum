@@ -3,7 +3,7 @@ class Content{
     
     // database connection and table name
     private $conn;
-    private $table_name = "resource";
+    private $table_name = "Resources";
     
     // object properties
     public $id;
@@ -27,8 +27,7 @@ class Content{
         // select all query
         $query = "SELECT *
                 FROM ".$this->table_name." where
-                    tour_id = ".$this->tour_id." and age_group = '".$this->age_group."' 
-                        and type = 'img'  ";
+                    tour_id = ".$this->tour_id." and type = 'img'  ";
         
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -48,7 +47,7 @@ class Content{
         // select all query
         $query = "SELECT DISTINCT(seq)
                 FROM ".$this->table_name." where
-                    tour_id = ".$this->tour_id." and age_group = '".$this->age_group."'";
+                    tour_id = ".$this->tour_id." order by id";
         
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -74,7 +73,7 @@ class Content{
         // select all query
         $query = "SELECT *
                 FROM ".$this->table_name." where
-                    tour_id = ".$this->tour_id." and age_group = '".$this->age_group."' and seq = ".$this->seq."
+                    tour_id = ".$this->tour_id." and seq = ".$this->seq."
                         and type = 'desc'";
         
         // prepare query statement
@@ -92,7 +91,7 @@ class Content{
         // select all query
         $query = "SELECT *
                 FROM ".$this->table_name." where
-                    tour_id = ".$this->tour_id." and age_group = '".$this->age_group."' 
+                    tour_id = ".$this->tour_id."  
                         and seq = ".$this->seq." and type = 'cord'";
         
         // prepare query statement
@@ -110,8 +109,8 @@ class Content{
         // select all query
         $query = "SELECT *
                 FROM ".$this->table_name." where
-                    tour_id = ".$this->tour_id." and age_group = '".$this->age_group."' 
-                        and seq = ".$this->seq." and type='ques' ";
+                    tour_id = ".$this->tour_id." 
+                        and seq = ".$this->seq." and type='ques' order by id";
         
         
         // prepare query statement
@@ -142,8 +141,9 @@ class Content{
         // select all query
         $query = "SELECT *
                 FROM ".$this->table_name." where
-                    tour_id = ".$this->tour_id." and age_group = '".$this->age_group."' 
-                        and type ='ans' and ref_id=".$this->ref_id." and seq = ".$this->seq."";
+                    tour_id = ".$this->tour_id." 
+                        and type ='ans' and ref_id=".$this->ref_id." and seq = ".$this->seq."
+                                        order by id";
         
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -167,7 +167,7 @@ class Content{
         // select all query
         $query = "SELECT *
                 FROM ".$this->table_name." where
-                    tour_id = ".$this->tour_id." and age_group = '".$this->age_group."'
+                    tour_id = ".$this->tour_id." 
                         and type = 'cans' and ref_id=".$this->ref_id."  ";
         
         // prepare query statement
@@ -182,5 +182,27 @@ class Content{
         return $correct_answer;
     }
     
-    
+    // read comments for a given tour.
+    function read_comments(){
+        
+        // select all query
+        $query = "SELECT *
+                FROM ".$this->table_name." where
+                    tour_id = ".$this->tour_id."
+                        and type ='comm' order by id";
+        
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $num = $stmt->rowCount();
+        $arr=array();
+                
+        for($i = 0;$i<$num;$i++){
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            array_push($arr, $row['value']);            
+        }
+        
+        return $arr;
+    }
+     
 }
