@@ -36,3 +36,30 @@ CREATE_TOUR_3.sql
 
 Happy touring :)
 
+
+Our final application for self guided tours is deployed here
+
+http://www-student.cse.buffalo.edu/museum/tours/web/login.html
+
+login details for admin user are
+
+username : pgarg@buffalo.edu 
+password : xyz
+
+All our code is in repo
+
+https://github.com/Parushgit/Buffalo-Museum/
+
+The required documents have all been edited and available at following links
+
+https://docs.google.com/document/d/1nyIMMAxaWY0zUDHUgeZOErINZ7OZJuLi2AYqMVh-Yh8/edit?usp=sharing
+
+https://docs.google.com/document/d/17qRce3d_0U666Ma-SGwi_6yoAWXtuIbpOrz4wH0RAWA/edit?usp=sharing
+
+https://docs.google.com/document/d/1E7Juoxdcxyoq8RV5CPYBWAmkGw7dyczQ219VVuVHNwU/edit?usp=sharing
+
+https://docs.google.com/document/d/16x-rpGWlxcc1W680_qNcYyEFjDgCMhXXviqyspF5O60/edit?usp=sharing
+
+https://docs.google.com/document/d/1rRDraHjvOAi1XtnLfJLzx7wPBO3-91ACPreeoZe230w/edit?usp=sharing
+
+https://docs.google.com/spreadsheets/d/1aO5QlSZAnGHiW1lwSd15kUj9F3cs4FI-S6TI2kPPHi8/edit?usp=sharing
