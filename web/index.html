@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Buffalo Museum Tours</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <script>
+      
+      $(document).ready(function() {
+
+        if(!("adminTab" in localStorage)){
+            $("#adminTab").hide();
+        }
+
+
+        if(!("adminTab" in localStorage) && !("age" in localStorage)){
+            window.location.href='login.html';
+        }
+
+      });
+
+
+      function logout(){
+
+         var con = confirm("Are you sure you want to logout ?");
+         if(con){
+          localStorage.clear();
+          window.location.href='login.html';
+
+         }
+
+      }
+    </script>
+  	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+		      <a class="navbar-brand" href="index.html">
+             <img src="images/buffalo-museum-white.png" class="img-fluid" style="width:50px" alt="">
+          </a>
+		      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="oi oi-menu"></span> Menu
+		      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+            <li id="adminTab" class="nav-item"><a href="adminTours.html" class="nav-link">Admin</a></li>
+	          <li class="nav-item"><a href="blog.html" class="nav-link">Tours</a></li>
+	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            <li id="logoutTab" class="nav-item"><a onclick="logout()" class="nav-link">Logout</a></li>
+	        </ul>
+	      </div>
+		  </div>
+	  </nav>
+    <!-- END nav -->
+
+    <section class="home-slider owl-carousel img" style="background-image: url(images/bg_1.jpg);">
+      <div class="slider-item">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-6 col-sm-12 ftco-animate">
+            	<span class="subheading">Amazing Exhibits</span>
+              <h1 class="mb-4">Tours</h1>
+              <p class="mb-4 mb-md-5">Get a unique touring experience</p>
+              <p><a href="blog.html" class="btn btn-primary p-3 px-xl-4 py-xl-3">Take a Tour</a></p>
+            </div>
+            <div class="col-md-6 ftco-animate">
+            	<img src="images/toursimg.jpg" class="img-fluid" alt="">
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-item">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-6 col-sm-12 order-md-last ftco-animate">
+            	<span class="subheading">Lots of Information</span>
+              <h1 class="mb-4">Learn a lot</h1>
+              <p class="mb-4 mb-md-5">Embark on a Quest of your own</p>
+              <p><a href="blog.html" class="btn btn-primary p-3 px-xl-4 py-xl-3">Go on a Quest</a></p>
+            </div>
+            <div class="col-md-6 ftco-animate">
+            	<img src="images/questimg.jpg" class="img-fluid" alt="">
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="slider-item" style="background-image: url(images/bg_3.jpg);">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
+
+            <div class="col-md-7 col-sm-12 text-center ftco-animate">
+            	<span class="subheading">Welcome</span>
+              <h1 class="mb-4">Explore the Buffalo Museum of Science’s self guided tours</h1>
+              <p class="mb-4 mb-md-5">The Buffalo Museum of Science is open seven days a week with extended hours on Wednesday nights.</p>
+              <p><a href="blog.html" class="btn btn-primary p-3 px-xl-4 py-xl-3">Tours and Quests</a> </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-intro">
+    	<div class="container-wrap">
+    		<div class="wrap d-md-flex">
+	    		<div class="info">
+	    			<div class="row no-gutters">
+	    				<div class="col-md-4 d-flex ftco-animate">
+	    					<div class="icon"><span class="icon-phone"></span></div>
+	    					<div class="text">
+	    						<h3>+1 716-896-5200</h3>
+	    						<p>Reach us</p>
+	    					</div>
+	    				</div>
+	    				<div class="col-md-4 d-flex ftco-animate">
+	    					<div class="icon"><span class="icon-my_location"></span></div>
+	    					<div class="text">
+	    						<h3>1020 Humboldt Pkwy</h3>
+	    						<p>Buffalo, NY 14211</p>
+	    					</div>
+	    				</div>
+	    				<div class="col-md-4 d-flex ftco-animate">
+	    					<div class="icon"><span class="icon-clock-o"></span></div>
+	    					<div class="text">
+	    						<h3>Open</h3>
+	    						<p>Mon. – Tues.: 10 a.m. – 4 p.m.</p>
+                  <p>Wed.: 10 a.m. – 9 p.m.</p>
+                  <p>Thurs. – Sun.: 10 a.m. – 4 p.m.</p>
+
+	    					</div>
+	    				</div>
+	    			</div>
+	    		</div>
+	    		<div class="social d-md-flex pl-md-5 p-4 align-items-center">
+	    			<ul class="social-icon">
+              <li class="ftco-animate"><a href="https://twitter.com/buffaloscience"><span class="icon-twitter"></span></a></li>
+               <li class="ftco-animate"><a href="https://www.facebook.com/BuffaloMuseumofScience/"><span class="icon-facebook"></span></a></li>
+               <li class="ftco-animate"><a href="https://www.instagram.com/buffaloscience/"><span class="icon-instagram"></span></a></li>
+            </ul>
+	    		</div>
+    		</div>
+    	</div>
+    </section>
+
+    <section class="ftco-about d-md-flex">
+    	<div class="one-half img" style="background-image: url(images/about.jpg);"></div>
+    	<div class="one-half ftco-animate">
+        <div class="heading-section ftco-animate ">
+          <h2 class="mb-4">Welcome to the Buffalo Museum of Science</h2>
+        </div>
+        <div>
+  				<p>In 1836, the Young Men’s Association (YMA) was founded in the City of Buffalo. As the center for organized cultural activities in the city, the YMA’s committees dealt with the public library, science, literature and art. In most small towns, the public library is the recipient of all manner of curiosities and interesting objects; consequently, the YMA became the proud owner of numerous specimens, minerals, fossils, shells, insects, pressed plants, sea weeds and various paintings and articles of historic value. The acquisition of these specimens called for a cabinet for their display – thus began the collection that would lead to the Buffalo Museum of Science we have today..</p>
+  			</div>
+    	</div>
+    </section>
+
+   
+    <section class="ftco-gallery">
+    	<div class="container-wrap">
+    		<div class="row no-gutters">
+					<div class="col-md-3 ftco-animate">
+						<a href"#" onclick="return false;" class="gallery img d-flex align-items-center" style="background-image: url(images/gallery-1.jpg);">
+							
+						</a>
+					</div>
+					<div class="col-md-3 ftco-animate">
+						  <a href"#" onclick="return false;" class="gallery img d-flex align-items-center" style="background-image: url(images/gallery-2.jpg);">
+							
+						</a>
+					</div>
+					<div class="col-md-3 ftco-animate">
+						 <a href"#" onclick="return false;" class="gallery img d-flex align-items-center" style="background-image: url(images/gallery-3.jpg);">
+							
+						</a>
+					</div>
+					<div class="col-md-3 ftco-animate">
+						 <a href"#" onclick="return false;" class="gallery img d-flex align-items-center" style="background-image: url(images/gallery-4.jpg);">
+						
+						</a>
+					</div>
+        </div>
+    	</div>
+    </section>
+
+
+	
+		
+
+    <footer class="ftco-footer ftco-section img">
+    	<div class="overlay"></div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Website by</h2>
+              <p>University at Buffalo students</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+               <li class="ftco-animate"><a href="https://twitter.com/buffaloscience"><span class="icon-twitter"></span></a></li>
+               <li class="ftco-animate"><a href="https://www.facebook.com/BuffaloMuseumofScience/"><span class="icon-facebook"></span></a></li>
+               <li class="ftco-animate"><a href="https://www.instagram.com/buffaloscience/"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+         
+          <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">1020 HUMBOLDT PARKWAY BUFFALO, NEW YORK 14211</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+1 716-896-5200</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@sciencebuff.org</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>
