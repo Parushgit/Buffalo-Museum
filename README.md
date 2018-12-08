@@ -22,7 +22,7 @@ All objects are stored in folder `objects`.
 All the above things are required to make apis working fully.
 
 ### Database
-Below are the scripts to be executed
+Below are the scripts to be executed (TBD)
 
 Happy touring :)
 
