@@ -92,28 +92,17 @@ function loginAsAdmin(){
           dataType:'json',
           url: '/museum/tours/api/login.php',
           success: function(data){
-             alert("success");
              localStorage.setItem('adminTab',adminEmail);
            // localStorage.setItem('age', age);
 
            window.location.href='index.html',true;
           },
           error: function(xhr, status, error) {
-            alert(status);
-            alert(error);
+             alert("invalid username / password !!")
           }
           });
 
-        /*if(adminEmail == "ahunt@buffalo.edu" && adminPwd=="alan"){
-            localStorage.setItem('adminTab',adminEmail);
-           // localStorage.setItem('age', age);
-
-           window.location.href='index.html',true;
-
-
-        }else{
-          alert("Invalid username or password !");
-        }*/
+       
 
    }
 
