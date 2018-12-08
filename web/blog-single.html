@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Buffalo Museum Tours</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/test.css">
+
+
+
+  </head>
+  <body>
+
+    <script>
+var currId = 0;//current tour id
+var slideIndex = 1;
+
+
+
+$(document).ready(function() {
+      
+       ///appendToStorage("list", "<h2>David<h2>");
+        var ctour = JSON.parse(localStorage.getItem("ctour"));
+        //alert(ctour.id);
+     if(!("adminTab" in localStorage)){
+            $("#adminTab").hide();
+        }
+
+
+        if(!("adminTab" in localStorage) && !("age" in localStorage)){
+            window.location.href='login.html';
+        }
+ 
+    /*$.fn.setTours = function(){ 
+        ///alert('You have successfully defined the function!'); 
+
+      var tours0 = {
+            "name":"Biodiversity Tour",
+           "items": [
+                {"img": "Map2.png","cord":"25-35"},
+                {"text": ["Biodiversity also features the Museum’s bison diorama, a treasured memory for multitudes of Museum visitors and refurbished by the skilled hands of Paul Marchand. The bison diorama is the only portion of the original installation of this exhibit hall that remains. While the rest of the Vertebrate Hall was remodeled in 1965 and removed in 2015, the bison exhibit remained unchanged. The bison themselves have a storied past – two cows and a calf came to the Buffalo Society of Natural Sciences from the Buffalo Zoo in the 1890s, and the group even traveled to Atlanta Georgia for inclusion in the 1895 International Exposition."],
+                  "questions" :[
+                      {
+                        "question": "Who is the strongest?",
+                        "answers": {
+                          "a": "Superman",
+                          "b": "The Terminator",
+                          "c": "Waluigi, obviously"
+                        },
+                        "correct_answer": "c"
+                      },
+                      {
+                        "question": "What is the best site ever created?",
+                        "answers": {
+                          "a": "SitePoint",
+                          "b": "Simple Steps Code",
+                          "c": "Trick question; they're both the best"
+                        },
+                        "correct_answer": "c"
+                      }
+                      ]
+                    },
+                {"img":"Map1.png","cord":"30-50"},
+                {"text": ["This is the next sequence, on the next floor."],
+                  "questions" :[
+                      {
+                        "question": "Who is the strongest?",
+                        "answers": {
+                          "a": "Superman",
+                          "b": "The Terminator",
+                          "c": "Waluigi, obviously"
+                        },
+                        "correct_answer": "c"
+                      },
+                      {
+                        "question": "What is the best site ever created?",
+                        "answers": {
+                          "a": "SitePoint",
+                          "b": "Simple Steps Code",
+                          "c": "Trick question; they're both the best"
+                        },
+                        "correct_answer": "c"
+                      },
+                      {
+                        "question": "What floor are you on?",
+                        "answers": {
+                          "a": "Floor 1",
+                          "b": "Floor 0",
+                          "c": "You feel lost"
+                        },
+                        "correct_answer": "a"
+                      }
+                      ]
+                    }
+            ]
+         };
+
+
+         localStorage.setItem("tour0", JSON.stringify(tours0));
+
+
+         var tours1 = {
+            "name":"Biodiversity Tour",
+            "items": [
+                {"img": "Map3.png","cord":"65-26"},
+                {"text": ["This field encompasses a set of disciplines that examines phenomena related to living organisms. The scale of study can range from sub-component biophysics up to complex ecologies. Biology is concerned with the characteristics, classification and behaviors of organisms, as well as how species were formed and their interactions with each other and the environment.The biological fields of botany, zoology, and medicine date back to early periods of civilization, while microbiology was introduced in the 17th century with the invention of the microscope. However, it was not until the 19th century that biology became a unified science. Once scientists discovered commonalities between all living things, it was decided they were best studied as a whole.Some key developments in biology were the discovery of genetics; evolution through natural selection; the germ theory of disease and the application of the techniques of chemistry and physics at the level of the cell or organic molecule."],
+                  "questions" :[
+                      {
+                        "question": "Who is the strongest?",
+                        "answers": {
+                          "a": "Superman",
+                          "b": "The Terminator",
+                          "c": "Waluigi, obviously"
+                        },
+                        "correct_answer": "c"
+                      },
+                      {
+                        "question": "What is the best site ever created?",
+                        "answers": {
+                          "a": "SitePoint",
+                          "b": "Simple Steps Code",
+                          "c": "Trick question; they're both the best"
+                        },
+                        "correct_answer": "c"
+                      }
+                      ]
+                    },
+                {"img":"Map4.png","cord":"20-50"},
+                 {"text": ["This is a different text.The biological fields of botany, zoology, and medicine date back to early periods of civilization, while microbiology was introduced in the 17th century with the invention of the microscope. However, it was not until the 19th century that biology became a unified science. Once scientists discovered commonalities between all living things, it was decided they were best studied as a whole.Some key developments in biology were the discovery of genetics; evolution through natural selection; the germ theory of disease and the application of the techniques of chemistry and physics at the level of the cell or organic molecule."],
+                  "questions" :[
+                      {
+                        "question": "Who is the strongest?",
+                        "answers": {
+                          "a": "Superman",
+                          "b": "The Terminator",
+                          "c": "Waluigi, obviously"
+                        },
+                        "correct_answer": "c"
+                      },
+                      {
+                        "question": "What is the best site ever created?",
+                        "answers": {
+                          "a": "SitePoint",
+                          "b": "Simple Steps Code",
+                          "c": "Trick question; they're both the best"
+                        },
+                        "correct_answer": "c"
+                      }
+                      ]
+                    }
+            ]
+         };
+
+          localStorage.setItem("tour1", JSON.stringify(tours1));
+
+    }*/
+
+     $.fn.loadTour = function(){ 
+       
+        var tid='tour'+ctour.id;
+        var tour = JSON.parse(localStorage.getItem(tid));
+
+       
+        var thtml ="";
+        for (i = 0; i < tour.items.length; i++) {
+           var item = tour.items[i];
+           thtml+="<div class='mySlides slidesfade' style='padding:15%'>"
+           thtml+="<h3>"+ctour.name+"</h3>"
+
+           if (item.img !== undefined){
+
+              thtml+="<div class='img-container'>"
+              thtml+="<img src='"+item.img+ "' style='width:100%'>"
+              if(item.cord !== undefined){
+
+                 var cres=item.cord.split("-");
+                 thtml+=" <div id='pins'>"
+                 thtml+=" <div class='pin pin-1' style='top:"+cres[0]+"%;left:"+cres[1]+"%'></div></div>"
+              }
+              thtml+="<p style='text-align:center'>Reach the location on the map</p>"
+              thtml+="</div>"
+           }
+
+           if (item.text !== undefined){
+
+            for (j = 0; j < item.text.length; j++) {
+
+                thtml+="<p style='width:100%;font-size: 15px'>"+item.text[j]+ "</p>"
+            }
+             
+           }
+
+             if (ctour.type === "quest" && item.questions !== undefined){
+                 thtml+="<div id='quiz"+i+"'></div>"
+                 thtml+="<button id='submit"+i+"'>Check my knowledge</button>"
+                 thtml+="<div id='results"+i+"'></div>"
+             }
+           thtml+= "</div>"
+        }
+
+      thtml+= "<a id='prev' class='prev' >&#10094;</a>"
+      thtml+="<a id='next' class='next' >&#10095;</a>"
+        $("#slidecontainer").html(thtml);
+
+        var dhtml="";
+
+         for (i = 0; i < tour.items.length; i++) {
+            dhtml+="<span class='dot' style='display:inline-block'></span> "
+         }
+         $("#dotscontainer").html(dhtml);
+
+     }
+
+     //$.fn.setTours();
+
+
+
+      $.fn.showSlides = function(n){ 
+           var i;
+            var slides = document.getElementsByClassName("mySlides slidesfade");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            for (i = 0; i < dots.length; i++) {
+              dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+      }
+
+     $.fn.buildQuiz = function(questions,quizContainer){ 
+
+        // we'll need a place to store the HTML output
+        const output = [];
+
+        // for each question...
+        questions.forEach((currentQuestion, questionNumber) => {
+          // we'll want to store the list of answer choices
+          const answers = [];
+
+          // and for each available answer...
+          for (letter in currentQuestion.answers) {
+            // ...add an HTML radio button
+            answers.push(
+              `<label>
+                <input type="radio" name="question${questionNumber}" value="${letter}">
+                ${letter} :
+                ${currentQuestion.answers[letter]}
+              </label>`
+            );
+          }
+
+          // add this question and its answers to the output
+          output.push(
+            `<div class="question"> ${currentQuestion.question} </div>
+            <div class="answers"> ${answers.join("")} </div>`
+          );
+        });
+
+        // finally combine our output list into one string of HTML and put it on the page
+        quizContainer.innerHTML = output.join("");
+      }
+
+
+        $.fn.showResults = function(questions,quizContainer,resultsContainer){ 
+        // gather answer containers from our quiz
+        const answerContainers = quizContainer.querySelectorAll(".answers");
+
+        // keep track of user's answers
+        let numCorrect = 0;
+
+       
+
+        // for each question...
+        questions.forEach((currentQuestion, questionNumber) => {
+          // find selected answer
+          const answerContainer = answerContainers[questionNumber];
+          const selector = `input[name=question${questionNumber}]:checked`;
+          const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+          
+          // if answer is correct
+          if (userAnswer === currentQuestion.correct_answer) {
+            // add to the number of correct answers
+            numCorrect++;
+
+            // color the answers green
+            answerContainers[questionNumber].style.color = "lightgreen";
+          } else {
+            // if answer is wrong or blank
+            // color the answers red
+            answerContainers[questionNumber].style.color = "red";
+          }
+        });
+
+        // show number of correct answers out of total
+        resultsContainer.innerHTML = `${numCorrect} out of ${questions.length}`;
+      }
+
+
+ $.fn.loadQuizz = function(){ 
+        var tid='tour'+ctour.id;
+        var tour = JSON.parse(localStorage.getItem(tid));
+        var thtml ="";
+        for (i = 0; i < tour.items.length; i++) {
+           var item = tour.items[i];
+           if (item.questions !== undefined){
+
+               const quizContainer = document.getElementById("quiz"+i);
+               const resultsContainer = document.getElementById("results"+i);
+               const submitButton = document.getElementById("submit"+i);
+               const questions =item.questions ;
+                 // display quiz right away
+                $.fn.buildQuiz(item.questions,quizContainer);
+
+                // on submit, show results
+                //submitButton.addEventListener("click", showResults);
+                $( "#submit"+i ).click(function() {
+
+                 $.fn.showResults(questions,quizContainer,resultsContainer);
+              });
+
+           }
+
+         }
+    }
+
+
+   $.fn.sendAComment = function(){ 
+
+       var cmt = {};
+       cmt.tour_id=ctour.id;
+       cmt.firstname=localStorage.getItem('firstName');
+       cmt.lastname=localStorage.getItem('lastName');
+       var mesg=$("#message").val().replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
+
+       cmt.comment=mesg;
+
+       var comment = JSON.stringify(cmt);
+
+        $.ajax({
+          type: 'POST',
+          data:{comment},
+          dataType:'json',
+          url: '/museum/tours/api/addComment.php',
+          success: function(data){
+              ///alert("success sending comment");
+          },
+           error: function(xhr, status, error) {
+             alert(status);
+             alert(error);
+          }
+      });
+
+
+   }
+
+
+   $.fn.loadAllComments = function(){
+       var tid='tour'+ctour.id;
+       var tour = JSON.parse(localStorage.getItem(tid));
+
+       $("#commentNums").html('');
+       $("#commentNums").html(tour.comments.length+" comments");
+       
+       var thtml="";
+
+
+        for(j=0;j<tour.comments.length;j++){
+           thtml+="<li class='comment'>"
+           thtml+="<div class='comment-body'>"
+           thtml+="<h3 >"+tour.comments[j].firstname+" "+tour.comments[j].lastname+"</h3>"
+           thtml+="<p>"+tour.comments[j].comment+"</p>"
+           thtml+="</div>"
+           thtml+="</li>"
+
+        }
+         
+         $("#commentList").html('');
+         $("#commentList").html(thtml);
+         
+
+   }
+
+   
+
+   $.ajax({
+    type: 'GET',
+    data:{'tour_id':ctour.id},
+    url: '/museum/tours/api/getTourDetails.php',
+    success: function(data){
+         console.log(JSON.stringify(data.tour[0]));
+         localStorage.setItem("tour"+ctour.id, JSON.stringify(data.tour[0]));
+
+          $.fn.loadTour();
+         
+          $.fn.showSlides(slideIndex);
+          $.fn.plusSlides = function(n){ 
+            $.fn.showSlides(slideIndex += n);
+          }
+          $.fn.currentSlide = function(n){ 
+            $.fn.showSlides(slideIndex += n);
+          }
+
+          $( "#prev" ).click(function() {
+               $.fn.plusSlides(-1);
+          });
+
+           $( "#next" ).click(function() {
+               $.fn.plusSlides(1);
+          });
+
+
+         $.fn.loadAllComments();
+         $.fn.loadQuizz();
+
+    },
+     error: function(xhr, status, error) {
+        alert(status);
+       console.log(error);
+    }
+});
+
+});
+
+
+///showSlides(slideIndex);
+
+function plusSlides(n) {
+  $.fn.showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  $.fn.showSlides(slideIndex = n);
+}
+
+function sendAComment() {
+ $.fn.sendAComment();
+}
+
+ function logout(){
+
+         var con = confirm("Are you sure you want to logout ?");
+         if(con){
+          localStorage.clear();
+          window.location.href='login.html';
+
+         }
+
+      }
+
+</script>
+  	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	       <a class="navbar-brand" href="index.html">
+             <img src="images/buffalo-museum-white.png" class="img-fluid" style="width:50px" alt="">
+          </a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li id="adminTab" class="nav-item"><a href="adminTours.html" class="nav-link">Admin</a></li>
+            <li class="nav-item active"><a href="blog.html" class="nav-link">Tours</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+           <li id="logoutTab" class="nav-item"><a onclick="logout()" class="nav-link">Logout</a></li>
+	        </ul>
+	      </div>
+		  </div>
+	  </nav>
+    <!-- END nav -->
+
+    <section class="home-slider owl-carousel img" style="background-image: url(images/bg_1.jpg);">
+
+      <div id="tourbackg" class="slider-item" style="background-image: url(images/bg_3.jpg);">
+        
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row slider-text justify-content-center align-items-center">
+            <div class="col-md-7 col-sm-12 text-center">
+            	<h1 class="mb-3 mt-5 bread"></h1>
+	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span class="mr-2"><a href="blog.html">Tours</a></span> <span>Tour Single</span></p>
+              <p>Please scroll down to view the tour</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+    <section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+          <div id="slidecontainer" class="slideshow-container">
+          </div>
+          <div id="dotscontainer" style="text-align:center">
+          </div>
+
+            
+
+          </div> 
+        </div>
+    </section> <!-- .section -->
+
+     <section class="ftco-section ftco-degree-bg">
+      <div class="container">
+        <div class="row">
+
+          <div class="pt-5 mt-5">
+              <h3 id="commentNums" class="mb-5"></h3>
+              <ul id="commentList" class="comment-list">
+                
+              </ul>
+              <!-- END comment-list -->
+              
+              <div class="comment-form-wrap pt-5">
+                <h3 class="mb-5">Leave a comment</h3>
+                <form action="#">
+                  
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <input id="commentButton" onclick="sendAComment()" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                  </div>
+
+                </form>
+              </div>
+            </div>
+
+        </div> 
+        </div>
+    </section>
+
+    <footer class="ftco-footer ftco-section img">
+    	<div class="overlay"></div>
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-3 col-md-6 mb-5 mb-md-5">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Website by</h2>
+              <p>University at Buffalo Students</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+               <li class="ftco-animate"><a href="https://twitter.com/buffaloscience"><span class="icon-twitter"></span></a></li>
+               <li class="ftco-animate"><a href="https://www.facebook.com/BuffaloMuseumofScience/"><span class="icon-facebook"></span></a></li>
+               <li class="ftco-animate"><a href="https://www.instagram.com/buffaloscience/"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+         
+      </div>
+    </div>
+    </footer>
+    
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>
