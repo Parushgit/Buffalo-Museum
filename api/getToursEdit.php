@@ -17,17 +17,7 @@ $db = $database->getConnection();
 $tour = new Tour($db);
 $age = new Age($db);
 
-$age->age = isset($_GET['age']) ? $_GET['age'] : die();
-
-$stmt = null;
-
-if($age->age == -1){
-    $stmt = $tour->read_without_age();
-} else{
-    $tour->age_group = $age->get_age_id();
-    $stmt = $tour->read();
-}
-
+$stmt = $tour->read_all();
 $num = $stmt->rowCount();
 
 if($num>0){
@@ -38,13 +28,17 @@ if($num>0){
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
       
         extract($row);
+        
+        $age->id = $age_group;
+        $age_range = $age->get_range_by_id();
                 
         $tour_item=array(
             "id" => $id,
             "name" => $name,
             "type" => $type,
             "path" => $image,
-            "age_group" => $age_group,
+            "age_group" => $age_range,
+            "status" => $status,
         );
         
         array_push($tours_arr["tours"], $tour_item);
