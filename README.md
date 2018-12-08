@@ -1,4 +1,4 @@
-# Buffalo Museum - Self Guided Tour (Deplyment Instructions)
+# Buffalo Museum - Self Guided Tour (Deployment Instructions)
 This document teaches how to install the application on a server. 
 
 ## Dependencies
